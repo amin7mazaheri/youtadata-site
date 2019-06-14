@@ -10,8 +10,43 @@
   src: url(/home/amin/Projects/django/pyteacher/parallax-template/font/vazir-font-master/dist/Vazir-Medium.woff);
 }
 
-body {
-  font-family: vazir-medium 
+@font-face {
+  font-family: vazir-light;
+  src: url(/home/amin/Projects/django/pyteacher/parallax-template/font/vazir-font-master/dist/Vazir-Light.woff);
+}
+@font-face {
+  font-family: vazir-bold ;
+  src: url(/home/amin/Projects/django/pyteacher/parallax-template/font/vazir-font-master/dist/Vazir-Bold.woff);
+}
+
+strong, b {
+  font-family: vazir-bold; 
+  direction:rtl; 
+}
+
+
+body, nav, h1,h2, h3, h4, h5, h6, footer, header,button {
+  font-family: vazir-medium ;
+  direction:rtl;
+  
+}
+h1{
+  font-size: 36px;
+}
+h2{
+  font-size: 30px;
+}
+h3{
+  font-size: 24px;
+}
+h4{
+  font-size: 18px;
+}
+h5{
+  font-size: 12px;
+}
+h6{
+  font-size: 10px;
 }
 nav ul a,
 nav .brand-logo {
