@@ -18,6 +18,27 @@
   font-family: vazir-bold;
   src: url(../font/vazir-font-v19.1.0/Farsi-Digits/Vazir-Bold-FD.woff);
 }
+@font-face {
+  font-family: Vazir Code;
+  src: url('../font/vazir-code-font-v1.1.1/Vazir-Code.eot');
+  src: url('../font/vazir-code-font-v1.1.1/Vazir-Code.eot?#iefix') format('embedded-opentype'),
+       url('../font/vazir-code-font-v1.1.1/Vazir-Code.woff') format('woff'),
+       url('../font/vazir-code-font-v1.1.1/Vazir-Code.ttf') format('truetype');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: Vazir Code Hack;
+  src: url('../font/vazir-code-font-v1.1.1/Vazir-Code-Hack.eot');
+  src: url('../font/vazir-code-font-v1.1.1/Vazir-Code-Hack.eot?#iefix') format('embedded-opentype'),
+       url('../font/vazir-code-font-v1.1.1/Vazir-Code-Hack.woff') format('woff'),
+       url('../font/vazir-code-font-v1.1.1/Vazir-Code-Hack.ttf') format('truetype');
+  font-weight: normal;
+}
+
+pre, code, article * {
+  font-family: 'Vazir Code', 'Vazir Code Hack', monospaced !important;
+}
 body, div, p, a, ul, li, span, i, h1, h2, h3, h4, h5, h6, footer, nav, p, button {
   font-family: vazir-medium;
   direction: rtl;
