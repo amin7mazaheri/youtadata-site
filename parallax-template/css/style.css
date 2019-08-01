@@ -109,7 +109,7 @@ footer.page-footer {
 .rtl {
   direction: rtl !important
 }
-.more-course:after {
+.more-course:after, .solve-exercises:after {
   font-family: 'Material Icons';
   content: 'keyboard_arrow_left';
   font-size: 23px;
@@ -124,15 +124,36 @@ footer.page-footer {
   top: 8px;
 }
 
+.attechment-files:before {
+  font-family: 'Material Icons';
+  content: 'insert_drive_file';
+  font-size: 35px;
+  position: relative;
+  top: -3px;
+  background-color: #ffffff40;
+  padding: 3px 12px;
+  border-radius: 50%;
+  margin-left: 20px;
+}
+
 .action-icons i {
   cursor: pointer;
 }
 
-.more-course:after{
-  font-family: "Material Icons";
-  content: "keyboard_arrow_left";
-  position: relative;
-  font-size: 13px;
-  top:8px;
+.avatar-in-comment {
+  width: 55px;
+  height: auto;
+  border-radius: 50%;
+  border: 3px solid #eee;
+}
 
-  }
+.thin-card {
+  padding: 15px 24px;
+}
+
+.comment-action a {
+  margin-right: 5px;
+}
+.comment-action i {
+  font-size: 20px
+}
