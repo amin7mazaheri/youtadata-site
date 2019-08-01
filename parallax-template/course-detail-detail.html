@@ -113,9 +113,9 @@
                 </div>
                 <div class="col s11">
                   <span class="comment-action">
-                    <a class="left grey-text text-lighten-1" data-position="top" data-tooltip="مخالفم" href="#!"><i class="material-icons">thumb_down</i></a>
-                    <a class="left grey-text text-lighten-1" data-position="top" data-tooltip="موافقم" href="#!"><i class="material-icons">thumb_up</i></a>
-                    <a class="left grey-text text-lighten-1" data-position="bottom" data-tooltip="پاسخ به این نظز" href="#!"><i class="material-icons">reply</i></a>
+                    <a class="left grey-text text-lighten-1 tooltipped" data-position="top" data-tooltip="مخالفم" href="#!"><i class="material-icons">thumb_down</i></a>
+                    <a class="left grey-text text-lighten-1 tooltipped" data-position="top" data-tooltip="موافقم" href="#!"><i class="material-icons">thumb_up</i></a>
+                    <a class="left grey-text text-lighten-1 tooltipped modal-trigger" data-position="top" data-tooltip="پاسخ به این نظر" href="#comment-modal"><i class="material-icons">reply</i></a>
                   </span>
                   <p>با سپاس از شما که این فیلم را مشاهد میکنید  سپاساین فیلم را مشاهد میکنید  سپاساین فیلم را مشاهد میکنید  سپاساین فیلم را مشاهد میکنید  سپاساین فیلم را مشاهد میکنید  سپاس از شما که این فیلم را مشاهد میکنید  سپاس از شما که این فیلم را مشاهد میکنید  سپاس از شما که این فیلم را مشاهد میکنید </p>
                 </div>
@@ -123,6 +123,45 @@
             </div>
           </div>
         </div>
+
+        <div class="col s11">
+          <div class="card-panel thin-card">
+            <div class="row">
+              <div class="valign-wrapper">
+                <div class="col s1 center">
+                  <img class="responsive-img avatar-in-comment" src="https://demos.creative-tim.com/rotating-css-card/images/rotating_card_profile2.png">
+                  <div style="font-family: vazir-thin; font-size:12px">user4345</div>
+                </div>
+                <div class="col s11">
+                  <span class="comment-action">
+                    <a class="left grey-text text-lighten-1 tooltipped" data-position="top" data-tooltip="مخالفم" href="#!"><i class="material-icons">thumb_down</i></a>
+                    <a class="left grey-text text-lighten-1 tooltipped" data-position="top" data-tooltip="موافقم" href="#!"><i class="material-icons">thumb_up</i></a>
+                  </span>
+                  <p>با سپاس از شما که این فیلم را مشاهد میکنید  سپاساین فیلم را مشاهد میکنید  سپاساین فیلم را مشاهد میکنید  سپاساین فیلم را مشاهد میکنید  سپاساین فیلم را مشاهد میکنید  سپاس از شما که این فیلم را مشاهد میکنید  سپاس از شما که این فیلم را مشاهد میکنید  سپاس از شما که این فیلم را مشاهد میکنید </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <a class="waves-effect waves-light btn modal-trigger" href="#comment-modal">نظر دهید!</a>
+
+        <!-- comment modal -->
+        <div id="comment-modal" class="modal">
+          <div class="modal-content">
+            <h4>نظر دهید!</h4>
+            <div class="row">
+              <div class="input-field comment-input-field col s12">
+                <textarea id="textarea1" class="materialize-textarea"></textarea>
+                <label for="textarea1">نظر خود را اینجا بنویسید...</label>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">ثبت</a>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -174,6 +213,7 @@
   <script type="text/javascript">
     $(document).ready(function(){
       $('.tooltipped').tooltip();
+      $('.modal').modal();
         
 
       $('.bookmark').on('click', function(){
