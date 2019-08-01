@@ -90,7 +90,10 @@ footer.page-footer {
   transform: translatex(75px) translateY(-14px) scale(0.8);
   -webkit-transform: translatex(75px) translateY(-14px) scale(0.8);
 }
-
+.input-field.comment-input-field > label:not(.label-icon).active {
+  transform: translatex(135px) translateY(-14px) scale(0.8) !important;
+  -webkit-transform: translatex(135px) translateY(-14px) scale(0.8) !important;
+}
 .btn-floating.halfway-fab {
   right: 101px;
   bottom: -37px;
@@ -124,7 +127,7 @@ footer.page-footer {
   top: 8px;
 }
 
-.attechment-files:before {
+.attachment-files:before {
   font-family: 'Material Icons';
   content: 'insert_drive_file';
   font-size: 35px;
@@ -156,4 +159,16 @@ footer.page-footer {
 }
 .comment-action i {
   font-size: 20px
+}
+
+.input-field.col label {
+  right: 0.75rem;
+}
+
+.fixed-action-btn.direction-left ul, .fixed-action-btn.direction-right ul {
+  direction: ltr;
+}
+
+.fixed-action-btn ul {
+  right: -35px;
 }
