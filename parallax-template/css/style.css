@@ -5,49 +5,33 @@
  *
  * Made By MaterializeCSS.com
  */
-@font-face {
-  font-family: vazir-medium ;
-  src: url(/home/amin/Projects/django/pyteacher/parallax-template/font/vazir-font-master/dist/Vazir-Medium.woff);
-}
 
 @font-face {
-  font-family: vazir-light;
-  src: url(/home/amin/Projects/django/pyteacher/parallax-template/font/vazir-font-master/dist/Vazir-Light.woff);
+  font-family: vazir-thin;
+  src: url(../font/vazir-font-v19.1.0/Farsi-Digits/Vazir-Thin-FD.woff);
 }
 @font-face {
-  font-family: vazir-bold ;
-  src: url(/home/amin/Projects/django/pyteacher/parallax-template/font/vazir-font-master/dist/Vazir-Bold.woff);
+  font-family: vazir-medium;
+  src: url(../font/vazir-font-v19.1.0/Farsi-Digits/Vazir-Medium-FD.woff);
 }
-
+@font-face {
+  font-family: vazir-bold;
+  src: url(../font/vazir-font-v19.1.0/Farsi-Digits/Vazir-Bold-FD.woff);
+}
+body, div, p, a, ul, li, span, i, h1, h2, h3, h4, h5, h6, footer, nav, p, button {
+  font-family: vazir-medium;
+  direction: rtl;
+}
 strong, b {
-  font-family: vazir-bold; 
-  direction:rtl; 
+  font-family: vazir-bold;
+  direction: rtl;
 }
-
-
-body, nav, h1,h2, h3, h4, h5, h6, footer, header,button {
-  font-family: vazir-medium ;
-  direction:rtl;
-  
-}
-h1{
-  font-size: 36px;
-}
-h2{
-  font-size: 30px;
-}
-h3{
-  font-size: 24px;
-}
-h4{
-  font-size: 18px;
-}
-h5{
-  font-size: 12px;
-}
-h6{
-  font-size: 10px;
-}
+h1 {font-size: 36px}
+h2 {font-size: 30px}
+h3 {font-size: 24px}
+h4 {font-size: 18px}
+h5 {font-size: 14px}
+h6 {font-size: 12px}
 nav ul a,
 nav .brand-logo {
   color: #444;
@@ -97,3 +81,58 @@ p {
 footer.page-footer {
   margin: 0;
 }
+
+.card .card-image .card-title {
+  right: 0
+}
+
+.input-field > label:not(.label-icon).active {
+  transform: translatex(75px) translateY(-14px) scale(0.8);
+  -webkit-transform: translatex(75px) translateY(-14px) scale(0.8);
+}
+
+.btn-floating.halfway-fab {
+  right: 101px;
+  bottom: -37px;
+  border: solid #fff 3px;
+  width: 80px;
+  height: auto;
+}
+
+.person-bio {
+  padding-top: 50px !important;
+}
+
+.ltr {
+  direction: ltr !important
+}
+.rtl {
+  direction: rtl !important
+}
+.more-course:after {
+  font-family: 'Material Icons';
+  content: 'keyboard_arrow_left';
+  font-size: 23px;
+  position: relative;
+  top: 8px;
+}
+.course-list:before {
+  font-family: 'Material Icons';
+  content: 'keyboard_arrow_left';
+  font-size: 23px;
+  position: relative;
+  top: 8px;
+}
+
+.action-icons i {
+  cursor: pointer;
+}
+
+.more-course:after{
+  font-family: "Material Icons";
+  content: "keyboard_arrow_left";
+  position: relative;
+  font-size: 13px;
+  top:8px;
+
+  }
