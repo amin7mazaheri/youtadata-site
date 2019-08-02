@@ -27,7 +27,7 @@
 <body>
   <nav class="white" role="navigation">
     <div class="nav-wrapper container ltr">
-      <a id="logo-container" href="#" class="brand-logo">PyTeacher</a>
+      <a id="logo-container" href="#" class="brand-logo">Youta Data</a>
       <ul class="right hide-on-med-and-down">
         <li><a href="#">خانه</a></li>
       </ul>
@@ -71,11 +71,43 @@
     </div>
 
     <div class="section">
+
       <div class="row">
-        <div class="col s12">
-          <article class="code"></article>
+        <div class="col s11">
+          <div class="card-panel light-blue lighten-5">
+            <article class="code code1"></article>
+            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
+            <hr>
+            <div>پیام شما در ساعت ۱۲:۳۴ ب.ظ دیده شد. <i class="material-icons right light-blue-text">done_all</i></div>
+          </div>
         </div>
       </div>
+
+      <div class="row">
+        <div class="col s11 offset-s1">
+          <div class="card-panel lime lighten-4">
+            <article class="code code1"></article>
+            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
+            <hr>
+            <div>پیام شما در ساعت ۱۲:۳۴ ب.ظ دیده شد. <i class="material-icons right green-text text-lighten-2">done_all</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12">
+          <article class="code code2"></article>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field comment-input-field col s12">
+          <textarea id="textarea1" class="materialize-textarea"></textarea>
+          <label for="textarea1">توضیحات لازم در باره حل این تمرین را در اینجا بنویسید ...</label>
+          <button type="submit" class="btn">ارسال</button>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -112,7 +144,7 @@
     </div>
     <div class="footer-copyright">
       <div class="container">
-      ساخته شده توسط <a class="brown-text text-lighten-3" href="http://materializecss.com">محمدرضا کسائی</a>
+      ساخته شده توسط <a class="brown-text text-lighten-3" href="http://materializecss.com">امین مظاهری</a>
       </div>
     </div>
   </footer>
@@ -138,21 +170,39 @@
   <script src="../codemirror-5.43.0/keymap/sublime.js"></script>
   <script src="https://codemirror.net/mode/python/python.js"></script>
   <script>
-    var editor = CodeMirror(document.body.getElementsByTagName("article")[0], {
+    var editor = CodeMirror($("article.code1")[0], {
+      readOnly: true,
       value: `def f():
     return`,
       lineNumbers: true,
       mode: {
         name: "python",
-       version: 3,
-       singleLineStringErrors: false
+        version: 3,
+        singleLineStringErrors: false
       },
       keyMap: "sublime",
       autoCloseBrackets: true,
       matchBrackets: true,
       showCursorWhenSelecting: true,
       theme: "monokai",
-      tabSize: 2
+      tabSize: 4
+    });
+
+    var editor = CodeMirror($("article.code2")[0], {
+      value: `def f():
+    return`,
+      lineNumbers: true,
+      mode: {
+        name: "python",
+        version: 3,
+        singleLineStringErrors: false
+      },
+      keyMap: "sublime",
+      autoCloseBrackets: true,
+      matchBrackets: true,
+      showCursorWhenSelecting: true,
+      theme: "monokai",
+      tabSize: 4
     });
   </script>
   <!-- codemirror scripts -->
