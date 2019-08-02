@@ -39,7 +39,7 @@
 pre, code, article * {
   font-family: 'Vazir Code', 'Vazir Code Hack', monospaced !important;
 }
-body, div, p, a, ul, li, span, i, h1, h2, h3, h4, h5, h6, footer, nav, p, button {
+body, div, p, a, ul, li, span, i, h1, h2, h3, h4, h5, h6, footer, nav, p, button, textarea {
   font-family: vazir-medium;
   direction: rtl;
 }
@@ -114,6 +114,10 @@ footer.page-footer {
 .input-field.comment-input-field > label:not(.label-icon).active {
   transform: translatex(135px) translateY(-14px) scale(0.8) !important;
   -webkit-transform: translatex(135px) translateY(-14px) scale(0.8) !important;
+}
+.input-field.comment-input-field > label:not(.label-icon).active {
+  transform: translatex(185px) translateY(-14px) scale(0.8) !important;
+  -webkit-transform: translatex(185px) translateY(-14px) scale(0.8) !important;
 }
 .btn-floating.halfway-fab {
   right: 101px;
@@ -192,4 +196,8 @@ footer.page-footer {
 
 .fixed-action-btn ul {
   right: -35px;
+}
+
+article.code * {
+  direction: ltr
 }
