@@ -39,7 +39,7 @@
 pre, code, article * {
   font-family: 'Vazir Code', 'Vazir Code Hack', monospaced !important;
 }
-body, div, p, a, ul, li, span, i, h1, h2, h3, h4, h5, h6, footer, nav, p, button, textarea {
+body, div, p, a, ul, li, span, i, h1, h2, h3, h4, h5, h6, footer, nav, p, button, textarea, input {
   font-family: vazir-medium;
   direction: rtl;
 }
@@ -200,4 +200,49 @@ footer.page-footer {
 
 article.code * {
   direction: ltr
+}
+
+header, main, footer {
+  padding-right: 300px;
+}
+
+@media only screen and (max-width : 992px) {
+  header, main, footer {
+    padding-right: 0;
+  }
+}
+.sidenav.sidenav-fixed.right {
+  right: 0;
+  padding-right: 0;
+}
+
+.sidenav li > a > i, .sidenav li > a > [class^="mdi-"], .sidenav li > a li > a > [class*="mdi-"], .sidenav li > a > i.material-icons {
+  margin: 0 0 0 10px;
+}
+
+ul.collapsible {
+  padding-right: 0;
+}
+
+.collapsible span.badge {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.collapsible-header i {
+  margin-right: 0;
+  margin-left: 1rem;
+}
+
+ul:not(.browser-default) {
+  padding-right: 0;
+}
+
+.rtl-select ul span {
+  float: right;
+}
+
+.select-wrapper .caret {
+  left: 0;
+  right: auto;
 }
