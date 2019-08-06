@@ -36,13 +36,6 @@
   font-weight: normal;
 }*/
 
-/* Custom Stylesheet */
-/**
- * Use this file to override Materialize files so you can update
- * the core Materialize files in the future
- *
- * Made By MaterializeCSS.com
- */
 pre, code, article * {
   font-family: 'Vazir Code', 'Vazir Code Hack', monospaced !important;
 }
