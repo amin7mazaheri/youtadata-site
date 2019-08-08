@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load thumbnail %}
 
 {% block content %}
 
@@ -30,7 +31,9 @@
         <div class="col s12 m4">
           <div class="card">
             <div class="card-image">
-              <img src="http://materializecss.com/images/sample-1.jpg">
+             {% thumbnail course.image "300x220" crop="center" as im %}
+              <img src="{{ course.image.url }}"  class="responsive-img" width="{{ im.width }}" height="{{ im.height }}">
+              {% endthumbnail %}
               <span class="card-title">{{ course.title}}</span>
             </div>
             <div class="card-content">
