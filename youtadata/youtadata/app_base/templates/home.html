@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-{% load static %}
 {% load thumbnail %}
+{% load static %}
 
 {% block content %}
 
@@ -8,7 +8,7 @@
     <div class="section no-pad-bot">
       <div class="container">
         <br><br>
-        <h1 class="header center teal-text text-lighten-2">آموزش کاربردی دیتا ساینس</h1>
+        <h1 class="header center teal-text text-lighten-2">آموزش دیتا ساینس</h1>
         <div class="row center">
           <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
         </div>
@@ -27,24 +27,10 @@
 
       <div class="row"> <!-- start of course row -->
         <h2>دوره های آنلاین</h2>
-        {%for course in courses%}
-        <div class="col s12 m4">
-          <div class="card">
-            <div class="card-image">
-             {% thumbnail course.image "300x220" crop="center" as im %}
-              <img src="{{ course.image.url }}"  class="responsive-img" width="{{ im.width }}" height="{{ im.height }}">
-              {% endthumbnail %}
-              <span class="card-title">{{ course.title}}</span>
-            </div>
-            <div class="card-content">
-              <p>{{course.description}} </p>
-            </div>
-            <div class="card-action">
-              <a href="#">شرکت در این دوره</a>
-            </div>
-          </div>
-        </div>
-        {%endfor%}
+        {% for course in courses %}
+          {% include "card.html" %}
+        {% endfor %}
+
         <a href="#!"><span class="more-course">دوره های بیشتر</span></a>
       </div> <!-- end of course row -->
     </div>
