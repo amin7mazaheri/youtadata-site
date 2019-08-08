@@ -3,7 +3,11 @@ from django.contrib.contenttypes.fields import GenericRelation
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 
+def course_image_path(instance, filename):
+    return instance.title
+
 class Course(models.Model):
+    image = models.ImageField(upload_to=course_image_path, null=True)
     title = models.CharField(max_length=100, null=True)
     description = models.TextField(null=True)
 

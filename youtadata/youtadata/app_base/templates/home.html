@@ -26,50 +26,22 @@
 
       <div class="row"> <!-- start of course row -->
         <h2>دوره های آنلاین</h2>
+        {%for course in courses%}
         <div class="col s12 m4">
           <div class="card">
             <div class="card-image">
               <img src="http://materializecss.com/images/sample-1.jpg">
-              <span class="card-title">پایتون مقدماتی</span>
+              <span class="card-title">{{ course.title}}</span>
             </div>
             <div class="card-content">
-              <p>در این دوره سعی کرده ایم که به شما پایتون را به صورت کاربردی و پروژه محور یاد بدهیم. امیدواریم که مفید بوده باشد.</p>
+              <p>{{course.description}} </p>
             </div>
             <div class="card-action">
               <a href="#">شرکت در این دوره</a>
             </div>
           </div>
         </div>
-
-        <div class="col s12 m4">
-          <div class="card">
-            <div class="card-image">
-              <img src="http://materializecss.com/images/sample-1.jpg">
-              <span class="card-title">پایتون مقدماتی</span>
-            </div>
-            <div class="card-content">
-              <p>در این دوره سعی کرده ایم که به شما پایتون را به صورت کاربردی و پروژه محور یاد بدهیم. امیدواریم که مفید بوده باشد.</p>
-            </div>
-            <div class="card-action">
-              <a href="#">شرکت در این دوره</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="card">
-            <div class="card-image">
-              <img src="http://materializecss.com/images/sample-1.jpg">
-              <span class="card-title">پایتون مقدماتی</span>
-            </div>
-            <div class="card-content">
-              <p>در این دوره سعی کرده ایم که به شما پایتون را به صورت کاربردی و پروژه محور یاد بدهیم. امیدواریم که مفید بوده باشد.</p>
-            </div>
-            <div class="card-action">
-              <a href="#">شرکت در این دوره</a>
-            </div>
-          </div>
-        </div>
+        {%endfor%}
         <a href="#!"><span class="more-course">دوره های بیشتر</span></a>
       </div> <!-- end of course row -->
     </div>
