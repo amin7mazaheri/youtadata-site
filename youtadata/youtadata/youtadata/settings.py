@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '+yjj196m&kb)da13$7r+_q(ez04u0%$g4+vl1#!^gwm4n5nzc+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app_base',
-    'sorl.thumbnail'
+    'sorl.thumbnail',
+    'social_django'
 ]
 
 MIDDLEWARE = [
@@ -64,12 +65,15 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',  
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
 ]
 
 WSGI_APPLICATION = 'youtadata.wsgi.application'
+
 
 
 # Database
@@ -117,8 +121,28 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
 MEDIA_ROOT = BASE_DIR +'/media/'
 MEDIA_URL = '/media/'
+#this argument use to login with social media 
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+#after login we will go home page
+LOGIN_REDIRECT_URL = 'app_base:home'
+
+
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY =''
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '' 
+
+
+AUTHENTICATION_BACKENDS = (
+'social_core.backends.open_id.OpenIdAuth',  
+ 'social_core.backends.google.GoogleOpenId',
+ 'social_core.backends.google.GoogleOAuth2',
+ 'social_core.backends.github.GithubOAuth2',
+ 'social_core.backends.facebook.FacebookOAuth2',
+ 
+ 'django.contrib.auth.backends.ModelBackend',
+)

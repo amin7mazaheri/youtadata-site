@@ -4,6 +4,6 @@ from app_base import views
 
 
 urlpatterns = [
-    path('', views.home),
+    path('', views.home, name='home'),
     path('course-detail/<int:id>', views.course_detail, name='course-detail'),
 ]
