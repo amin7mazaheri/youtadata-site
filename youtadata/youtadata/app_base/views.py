@@ -19,9 +19,8 @@ def course_detail(request, id ):
 
 @login_required
 def register_course(request, course_id):
-    print('======================================')
-    print (dir(request))
-    print('======================================')
-    course = Course.objects.get(id=course_id)
-    request.user.registeredcourse_set.create(course=course)
-    return HttpResponse('ok!!')
+    if request.user.is_authenticated:
+        course = Course.objects.get(id=course_id)
+        request.user.registeredcourse_set.create(course=course)
+        return HttpResponse('ok!!')
+    return HttpResponse('first enroll!!!')
