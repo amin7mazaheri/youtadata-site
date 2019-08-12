@@ -26,5 +26,7 @@ urlpatterns = [
     url(r'^logout/$', views.LogoutView.as_view(), name='logout'),
     url(r'^oauth/', include(('social_django.urls'), namespace='social')),
     path('', include(('app_base.urls', 'app_base'), namespace='app-base')),
-]  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('profile',include(('app_accounts.urls', 'app_accounts'), namespace='app-accounts')),
+
+ ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

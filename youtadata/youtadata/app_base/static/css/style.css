@@ -35,7 +35,6 @@
        url('../font/vazir-code-font-v1.1.1/Vazir-Code-Hack.ttf') format('truetype');
   font-weight: normal;
 }*/
-
 body {
   background-color: #f5f5f5;
 }
@@ -205,9 +204,10 @@ article.code * {
   direction: ltr
 }
 
-/*header, main, footer {
+header, main, footer {
   padding-right: 300px;
 }
+
 @media only screen and (max-width : 992px) {
   header, main, footer {
     padding-right: 0;
@@ -216,7 +216,7 @@ article.code * {
 .sidenav.sidenav-fixed.right {
   right: 0;
   padding-right: 0;
-}*/
+}
 
 .sidenav li > a > i, .sidenav li > a > [class^="mdi-"], .sidenav li > a li > a > [class*="mdi-"], .sidenav li > a > i.material-icons {
   margin: 0 0 0 10px;
