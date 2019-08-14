@@ -3,7 +3,7 @@ from app_base.models import Course
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
-
+from django.contrib import messages
 def home(request):
     ctx = {}
     ctx['courses'] = Course.objects.all()
@@ -23,5 +23,10 @@ def register_course(request, course_id):
     course = Course.objects.get(id=course_id)
     if course not in [rc.course for rc in request.user.registeredcourse_set.all()]:
         request.user.registeredcourse_set.create(course=course)
+        messages.success(request, 
+            ' % s عزیز شما قبلا در این دوره ثبت نام کرده اید' % request.user.username)
+    else:    
+        messages.add_message(request, messages.SUCCESS, 
+            '%s عزیز دوره مورد نظر شما با موفقیت ثبت نام شد'%request.user.username)
     return HttpResponseRedirect(reverse('app-accounts:profile')) 
     

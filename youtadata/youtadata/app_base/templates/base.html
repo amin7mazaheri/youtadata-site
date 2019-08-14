@@ -48,7 +48,7 @@
   <main>
     <nav class="white" role="navigation">
       <div class="nav-wrapper container ltr">
-        <a id="logo-container" href="#" class="brand-logo">Youta Data</a>
+        <a id="logo-container" href="#" class="brand-logo">PyTeacher</a>
         <ul class="right hide-on-med-and-down">
           <li><a href="#">خانه</a></li>
         </ul>
@@ -94,7 +94,7 @@
     </div>
     <div class="footer-copyright">
       <div class="container">
-      ساخته شده توسط <a class="brown-text text-lighten-3" href="http://materializecss.com">امین مظاهری</a>
+      ساخته شده توسط <a class="brown-text text-lighten-3" href="http://materializecss.com">محمدرضا کسائی</a>
       </div>
     </div>
   </footer>
@@ -105,6 +105,25 @@
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="{% static 'js/materialize.js' %}"></script>
   <script src="{% static 'js/init.js' %}"></script>
+  <script type="text/javascript">
+    {% if messages %}
+      {% for message in messages %}
+        var toastHTML = `
+          <button class="btn-flat toast-action">
+          {% if message.tags == 'success' %}
+            <i class="material-icons">check</i>
+          {% elif message.tags == 'close' %}
+            <i class="material-icons">check</i>
+          {% else %}
+            <i class="material-icons">info_outline</i>
+          {% endif %}
+          </button>
+          {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}توجه: {% endif %}
+          {{ message }}`;
+        M.toast({html: toastHTML, displayLength: 7000});
+      {% endfor %}
+    {% endif %}
+  </script>
   {% endblock js %}
 
   </body>
