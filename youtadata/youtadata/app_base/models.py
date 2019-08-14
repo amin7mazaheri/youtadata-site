@@ -10,20 +10,24 @@ class Course(models.Model):
     image = models.ImageField(upload_to=course_image_path, null=True)
     title = models.CharField(max_length=100, null=True)
     description = models.TextField(null=True)
-
+    def  __str__(self):
+        return self.title
 
 class SessionCourse(models.Model):
     course =models.ForeignKey(Course, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=100, null=True)
     description = models.TextField(null=True)
     attachment_files = GenericRelation('AttachmentsFiles')
-
+    def  __str__(self):
+        return self.title
 
 class SessionExercise(models.Model):
     course_session =models.ForeignKey(SessionCourse, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=100, null=True)
     description = models.TextField(null=True)
     attachment_files = GenericRelation('AttachmentsFiles')
+    def  __str__(self):
+        return self.title
 
 
 class AttachmentsFiles(models.Model):

@@ -1,5 +1,23 @@
 {% extends "base.html" %}
 
+{% block css %}
+  {{ block.super }}
+  <style type="text/css">
+    header, main, footer {
+      padding-right: 300px;
+    }
+    @media only screen and (max-width : 992px) {
+      header, main, footer {
+        padding-right: 0;
+      }
+    }
+    .sidenav.sidenav-fixed.right {
+      right: 0;
+      padding-right: 0;
+    }
+  </style>
+{% endblock css %}
+
 {% block content %}
     <ul id="slide-out" class="sidenav sidenav-fixed right">
       <li><div class="user-view">
@@ -22,10 +40,16 @@
     
       <div class="container">
         <div class="section">
-          asd
+          <dir class="row">
+          {% for course in registered_course %}
+            <div class="col s12 m6">
+              {% include "card.html" %}
+            </div>
+          {% endfor %}
+          </dir>
+          
         </div>
       </div>
-
 {% endblock content %}
 
 {% block js %}

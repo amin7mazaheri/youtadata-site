@@ -6,6 +6,7 @@ from app_base.models import Course
 
 User = get_user_model()
 EDUCATION_TYPE = (
+    (0, 'تعیین شنده'),
     (1, 'دانش آموز'),
     (2, 'دیپلم'),
     (3, 'کاردانی'),
@@ -27,6 +28,8 @@ class Profile(models.Model):
     def eduction(self, education_type):
         reversed_type = {v:k for k, v in dict(EDUCATION_TYPE).items()}
         self._education = reversed_type.get(education_type)
+    def __str__(self):
+        return self.user.username
 
 
 @receiver(post_save, sender=User)
@@ -37,6 +40,9 @@ def create_user_profile(sender, instance, created, **kwargs):
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
+    if not instance.profile._education:
+        instance.profile._education = 0
+
     instance.profile.save()
 
 class RegisteredCourse(models.Model):
