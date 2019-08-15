@@ -25,12 +25,12 @@
           <img src="http://materializecss.com/images/office.jpg">
         </div>
         <a href="#user"><img class="circle" src="http://materializecss.com/images/yuna.jpg"></a>
-        <a href="#name"><span class="white-text name">John Doe</span></a>
-        <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+        <a href="#name"><span class="white-text name">{{ request.user.username }}</span></a>
+        <a href="#email"><span class="white-text email">{{ request.user.email }}</span></a>
       </div></li>
       <li><a class="waves-effect" href="#!"><i class="material-icons right">bookmark</i>موارد ذخیره شده</a></li>
       <li><a class="waves-effect" href="#!"><i class="material-icons right">school</i>دوره های من</a></li>
-      <li><a class="waves-effect" href="#!"><i class="material-icons right">comment</i>ارتباط با محمدرضا</a></li>
+      <li><a class="waves-effect" href="#!"><i class="material-icons right">comment</i>ارتباط با ایمن</a></li>
       <li><a class="waves-effect" href="#!"><i class="material-icons right">pie_chart_outlined</i>وضعیت تحصیلی من</a></li>
       <li><div class="divider"></div></li>
       <li><a class="waves-effect" href="#!"><i class="material-icons right">person</i>پروفایل</a></li>
@@ -38,14 +38,23 @@
     </ul>
 
     
-      <div class="container">
+      <div class="container" style="width: 90%">
         <div class="section">
-          <dir class="row">
-          {% for course in registered_course %}
-            <div class="col s12 m6">
-              {% include "card.html" %}
+          <dir class="row" style="padding: 0">
+            <div class="hide-on-small-only">
+              {% for course in registered_course %}
+                <div class="col s12">
+                  {% include "card-horizontal.html" %}
+                </div>
+              {% endfor %}
             </div>
-          {% endfor %}
+            <div class="hide-on-med-and-up">
+              {% for course in registered_course %}
+                <div class="col s12">
+                  {% include "card.html" %}
+                </div>
+              {% endfor %}
+            </div>
           </dir>
           
         </div>
