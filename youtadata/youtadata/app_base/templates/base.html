@@ -50,11 +50,16 @@
       <div class="nav-wrapper container ltr">
         <a id="logo-container" href="#" class="brand-logo">Youta Data</a>
         <ul class="right hide-on-med-and-down">
-          <li><a href="#">خانه</a></li>
+          <li><a href="{% url 'app_accounts:profile'%}"><i class="material-icons right">person</i>پروفایل</a></li>
+          <li><a href="{% url 'app_base:home'%}"> <i class="material-icons right">home 
+          </i> خانه 
+        </a>
+      </li>
         </ul>
 
         <ul id="nav-mobile" class="sidenav">
-          <li><a href="#">خانه</a></li>
+          <li><a href="{% url 'app_base:home' %}"><i class="material-icons right">home</i>خانه</a></li>
+          <li><a href="{% url 'app_accounts:profile'%}"><i class="material-icons right">person</i>پروفایل</a></li>
         </ul>
         <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       </div>
@@ -105,6 +110,11 @@
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="{% static 'js/materialize.js' %}"></script>
   <script src="{% static 'js/init.js' %}"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.sidenav').sidenav({edge:'right'})
+    })
+  </script>
   <script type="text/javascript">
     {% if messages %}
       {% for message in messages %}
