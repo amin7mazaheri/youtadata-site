@@ -11,7 +11,8 @@
         <div class="col s12">
           <ul class="tabs tabs-fixed-width">
             <li class="tab col s3"><a class="teal-text" href="#course-detail">شرح دوره</a></li>
-            <li class="tab col s3"><a class="active teal-text" href="#course-sessions">جلسات این دوره</a></li>
+            <li class="tab col s3"><a class="teal-text" href="#course-sessions">جلسات این دوره</a></li>
+            <li class="tab col s3"><a class="teal-text" href="#course-exercise">تمرین های دوره</a></li>
           </ul>
         </div>
         <div id="course-detail" class="col s12">
@@ -52,6 +53,19 @@
                   </a>
                 </div>
               </div>            
+          {% endfor %}
+        </div>
+        <div id="course-exercise" class="col s12">
+          {% for session in course.coursesession_set.all %}
+            {% for ex in session.coursesessionexercise_set.all %}
+                <div class="card-panel">
+                  <div class="">
+                    <a href="{{ ex.get_absolute_url }}">
+                      <i class="material-icons left">code</i> {{ session }} - {{ ex }}
+                    </a>
+                  </div>
+                </div>            
+            {% endfor %}
           {% endfor %}
         </div>
       </div>

@@ -75,7 +75,6 @@
           <h2>توضیحات این قسمت</h2>
           <div class="card-panel">
             <p>{{ session.description }}</p>
-            <a href="#!"><span class="solve-exercises">حل تمرین های این قسمت</span></a>
           </div>
         </div>
       </div>
@@ -91,6 +90,21 @@
           </a>
         </div>
         {% endfor %}
+      </div>
+
+      <div class="row">
+        <div class="col s12">
+          <h3><span class="solve-exercises">حل تمرین های این قسمت</span></h3>
+          {% for ex in session.coursesessionexercise_set.all %}
+              <div class="card-panel">
+                <div class="">
+                  <a href="{{ ex.get_absolute_url }}">
+                    <i class="material-icons left">code</i> {{ session }} - {{ ex }}
+                  </a>
+                </div>
+              </div>            
+          {% endfor %}
+        </div>
       </div>
 
       <div class="row">
