@@ -1,18 +1,16 @@
 
-  <div class="col s12 m7">
-    <h2 class="header">Horizontal Card</h2>
-    <div class="card horizontal">
-      <div class="card-image">
-        <img src="https://lorempixel.com/100/190/nature/6">
-      </div>
-      <div class="card-stacked">
-        <div class="card-content">
-          <p>I am a very simple card. I am good at containing small bits of information.</p>
-        </div>
-        <div class="card-action">
-          <a href="#">This is a link</a>
-        </div>
-      </div>
-    </div>
+ {% load thumbnail %}
+<div class="card horizontal">
+  <div class="card-image">
+    <a href="{% url 'app-base:course-detail' id=course.id %}">
+      {% thumbnail course.image "300x220" crop="center" as im %}
+        <img src="{{ im.url }}" class="responsive-img" width="{{ im.width }}" height="{{ im.height }}">
+      {% endthumbnail %}
+      <span class="card-title">{{ course.title }}</span>
+    </a>
   </div>
+  <div class="card-content">
+    <p>{{ course.description|truncatewords:11 }}</p>
+  </div>
+</div>
             

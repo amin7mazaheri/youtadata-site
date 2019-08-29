@@ -14,10 +14,21 @@ def course_detail(request, id ):
     In this view we intend to show the detail of our courses
     """
     ctx = {}
-    ctx['course'] = Course.objects.get(id=id)
+    ctx['course'] = course = Course.objects.get(id=id)
     ctx['courses'] = Course.objects.all().exclude(id=id)
     return render(request, 'course-detail.html', ctx)
 
+def course_session_detail(request, course_id, session_id):
+    """
+    In this view we intend to show the detail of our courses
+    """
+    ctx = {}
+    # import ipdb;ipdb.set_trace()
+    course = Course.objects.get(id=course_id)
+    ctx['session'] = course.sessioncourse_set.get(id=session_id)
+    return render(request, 'course-session-detail.html', ctx)
+
+    
 @login_required
 def register_course(request, course_id):
     course = Course.objects.get(id=course_id)

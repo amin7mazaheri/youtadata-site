@@ -163,7 +163,7 @@ footer.page-footer {
   background-color: #ffffff40;
   padding: 3px 12px;
   border-radius: 50%;
-  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .action-icons i {
@@ -204,12 +204,6 @@ article.code * {
   direction: ltr
 }
 
-
-.sidenav.sidenav-fixed.right {
-  right: 0;
-  padding-right: 0;
-}
-
 .sidenav li > a > i, .sidenav li > a > [class^="mdi-"], .sidenav li > a li > a > [class*="mdi-"], .sidenav li > a > i.material-icons {
   margin: 0 0 0 10px;
 }
@@ -239,4 +233,17 @@ ul:not(.browser-default) {
 .select-wrapper .caret {
   left: 0;
   right: auto;
+}
+
+.tabs .indicator {
+  background-color: #26a69a;
+}
+
+.tabs .tab a:focus, .tabs .tab a:focus.active {
+  background-color: #26a69a1c;
+}
+
+.file-title {
+  font-weight: bold;
+  font-family: 'Vazir Code';
 }
