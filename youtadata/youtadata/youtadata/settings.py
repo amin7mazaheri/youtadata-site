@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'app_base',
     'app_accounts',
     'sorl.thumbnail',
-    'social_django'
+    'social_django',
+    'app_chat',
 ]
 
 MIDDLEWARE = [

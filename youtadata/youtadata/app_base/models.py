@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericRelation
 from django.contrib.contenttypes.fields import GenericForeignKey
+from app_chat.models import Chat 
 
 
 def course_image_path(instance, filename):
@@ -34,6 +35,7 @@ class CourseSession(models.Model):
     description = models.TextField(null=True)
     aparat_video = models.TextField(null=True)
     attachment_files = GenericRelation('AttachmentFiles')
+    chats = GenericRelation(Chat)
 
     def save(self, *args, **kwargs):
         self.slug = self.title.replace(' ', '-')
@@ -53,6 +55,7 @@ class CourseSessionExercise(models.Model):
     title = models.CharField(max_length=100, null=True)
     description = models.TextField(null=True)
     attachment_files = GenericRelation('AttachmentFiles')
+    chats = GenericRelation(Chat)
 
     def save(self, *args, **kwargs):
         self.slug = self.title.replace(' ', '-')
