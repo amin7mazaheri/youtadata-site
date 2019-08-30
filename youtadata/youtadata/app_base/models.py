@@ -14,26 +14,33 @@ def attachment_path(instance, filename):
 
 
 class Course(models.Model):
+    slug = models.SlugField(null=True, allow_unicode=True, blank=True)
     image = models.ImageField(upload_to=course_image_path, null=True)
     title = models.CharField(max_length=100, null=True)
     description = models.TextField(null=True)
 
-    def slug(self):
-        return self.title.replace(' ', '-')
+    def save(self, *args, **kwargs):
+        self.slug = self.title.replace(' ', '-')
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.title
 
 
 class CourseSession(models.Model):
+    slug = models.SlugField(null=True, allow_unicode=True, blank=True)
     course = models.ForeignKey(Course, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=100, null=True)
     description = models.TextField(null=True)
     aparat_video = models.TextField(null=True)
     attachment_files = GenericRelation('AttachmentFiles')
 
+    def save(self, *args, **kwargs):
+        self.slug = self.title.replace(' ', '-')
+        super().save(*args, **kwargs)
+
     def get_absolute_url(self):
-        params = {'course_title': self.course.title, 'session_title': self.title}
+        params = {'course_slug': self.course.slug, 'session_slug': self.slug}
         return reverse('app-base:course-session-detail', kwargs=params)
 
     def __str__(self):
@@ -41,14 +48,19 @@ class CourseSession(models.Model):
 
 
 class CourseSessionExercise(models.Model):
+    slug = models.SlugField(null=True, allow_unicode=True, blank=True)
     course_session = models.ForeignKey(CourseSession, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=100, null=True)
     description = models.TextField(null=True)
     attachment_files = GenericRelation('AttachmentFiles')
 
+    def save(self, *args, **kwargs):
+        self.slug = self.title.replace(' ', '-')
+        super().save(*args, **kwargs)
+
     def get_absolute_url(self):
-        params = {'course_title': self.course_session.course.title,
-                  'session_title': self.course_session.title, 'exercise_title': self.title}
+        params = {'course_slug': self.course_session.course.slug,
+                  'session_slug': self.course_session.slug, 'exercise_slug': self.slug}
         return reverse('app-base:course-session-exercise-detail', kwargs=params)
 
     def __str__(self):

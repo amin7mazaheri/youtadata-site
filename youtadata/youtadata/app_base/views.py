@@ -13,25 +13,24 @@ def home(request):
 
 
 def course_detail(request, slug):
-    title = slug.replace('-', ' ')
     ctx = {}
-    ctx['course'] = course = Course.objects.get(title=title)
-    ctx['courses'] = Course.objects.all().exclude(title=title)
+    ctx['course'] = course = Course.objects.get(slug=slug)
+    ctx['courses'] = Course.objects.all().exclude(slug=slug)
     return render(request, 'course-detail.html', ctx)
 
 
-def course_session_detail(request, course_title, session_title):
+def course_session_detail(request, course_slug, session_slug):
     ctx = {}
-    course = Course.objects.get(title=course_title)
-    ctx['session'] = course.coursesession_set.get(title=session_title)
+    course = Course.objects.get(slug=course_slug)
+    ctx['session'] = course.coursesession_set.get(slug=session_slug)
     return render(request, 'course-session-detail.html', ctx)
 
 
-def course_session_exercise_detail(request, course_title, session_title, exercise_title):
+def course_session_exercise_detail(request, course_slug, session_slug, exercise_slug):
     ctx = {}
-    course = Course.objects.get(title=course_title)
-    session = course.coursesession_set.get(title=session_title)
-    ctx['exercise'] = session.coursesessionexercise_set.get(title=exercise_title)
+    course = Course.objects.get(slug=course_slug)
+    session = course.coursesession_set.get(slug=session_slug)
+    ctx['exercise'] = session.coursesessionexercise_set.get(slug=exercise_slug)
     return render(request, 'exercise-detail.html', ctx)
 
 
