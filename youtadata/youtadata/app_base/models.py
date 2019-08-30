@@ -8,6 +8,7 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 def course_image_path(instance, filename):
     return instance.title
 
+
 def attachment_path(instance, filename):
     return instance.title
 
@@ -16,6 +17,9 @@ class Course(models.Model):
     image = models.ImageField(upload_to=course_image_path, null=True)
     title = models.CharField(max_length=100, null=True)
     description = models.TextField(null=True)
+
+    def slug(self):
+        return self.title.replace(' ', '-')
 
     def __str__(self):
         return self.title
@@ -29,7 +33,7 @@ class CourseSession(models.Model):
     attachment_files = GenericRelation('AttachmentFiles')
 
     def get_absolute_url(self):
-        params = {'course_id': self.course.id, 'session_id': self.id}
+        params = {'course_title': self.course.title, 'session_title': self.title}
         return reverse('app-base:course-session-detail', kwargs=params)
 
     def __str__(self):
@@ -41,6 +45,11 @@ class CourseSessionExercise(models.Model):
     title = models.CharField(max_length=100, null=True)
     description = models.TextField(null=True)
     attachment_files = GenericRelation('AttachmentFiles')
+
+    def get_absolute_url(self):
+        params = {'course_title': self.course_session.course.title,
+                  'session_title': self.course_session.title, 'exercise_title': self.title}
+        return reverse('app-base:course-session-exercise-detail', kwargs=params)
 
     def __str__(self):
         return self.title

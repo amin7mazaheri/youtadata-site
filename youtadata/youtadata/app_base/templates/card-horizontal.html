@@ -1,8 +1,7 @@
-
- {% load thumbnail %}
+{% load thumbnail %}
 <div class="card horizontal">
   <div class="card-image">
-    <a href="{% url 'app-base:course-detail' id=course.id %}">
+    <a href="{% url 'app-base:course-detail' course.title %}">
       {% thumbnail course.image "300x220" crop="center" as im %}
         <img src="{{ im.url }}" class="responsive-img" width="{{ im.width }}" height="{{ im.height }}">
       {% endthumbnail %}
@@ -12,5 +11,4 @@
   <div class="card-content">
     <p>{{ course.description|truncatewords:11 }}</p>
   </div>
-</div>
-            
+</div>   
