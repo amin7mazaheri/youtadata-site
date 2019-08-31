@@ -15,6 +15,14 @@ class Chat(models.Model):
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey()
+    create_datetime = models.DateTimeField(auto_now_add=True, null=True)
+    seen_datetime = models.DateTimeField(null=True)
+    
 
+    @property
+    def is_student(self):
+        return 'students' in [group.name for group in self.user.groups.all()]
+
+    
     def __str__(self):
         return self.message[:30]
