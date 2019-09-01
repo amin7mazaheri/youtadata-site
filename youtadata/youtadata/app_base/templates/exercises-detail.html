@@ -3,6 +3,7 @@
 
 {% block css %}
   {{ block.super }}
+  <link rel="stylesheet" href="{% static 'css/animate.css' %}">
   <link rel="stylesheet" href="{% static 'codemirror-5.43.0/lib/codemirror.css' %}">
   <link rel="stylesheet" href="{% static 'codemirror-5.43.0/addon/fold/foldgutter.css' %}">
   <link rel="stylesheet" href="{% static 'codemirror-5.43.0/addon/dialog/dialog.css' %}">
@@ -53,7 +54,7 @@
                 <article class="code code{{ forloop.counter }}"></article>
                 <p>{{ chat.message }}</p>
                 <hr>
-                <div>{{ chat.jd_create_datetime }}<i class="material-icons right light-blue-text">done_all</i></div>
+                <div>{{ chat.jd_create_datetime }}<i id="msg-{{ chat.id }}" data-msg-num="{{ chat.id }}" data-seen="{{ chat.seen }}" class="material-icons right light-blue-text">{% if chat.seen %}done_all{% else %}check{% endif %}</i></div>
               </div>
             </div>
           </div>
@@ -64,7 +65,7 @@
                 <article class="code code{{ forloop.counter }}"></article>
                 <p>{{ chat.message }}</p>
                 <hr>
-                <div>{{ chat.jd_create_datetime }}<i class="material-icons right green-text text-lighten-2">done_all</i></div>
+                <div>{{ chat.jd_create_datetime }}<i id="msg-{{ chat.id }}" data-msg-num="{{ chat.id }}" data-seen="{{ chat.seen }}" class="material-icons right green-text text-lighten-2">{% if chat.seen %}done_all{% else %}check{% endif %}</i></div>
               </div>
             </div>
           </div>
@@ -75,6 +76,8 @@
           <article class="code code-draft"></article>
         </div>
       </div>
+
+      <div id="me">ME!</div>
 
       <div class="row">
         <div class="input-field comment-input-field col s12">
@@ -105,6 +108,34 @@
     <script src="{% static 'codemirror-5.43.0/keymap/sublime.js' %}"></script>
     <script src="https://codemirror.net/mode/python/python.js"></script>
   <script>
+    $(document).ready(function(){
+      $(window).scroll(function() {
+        $.each($('[id^="msg-"]'), function(){
+          var top_of_element = $(this).offset().top;
+          var bottom_of_element = $(this).offset().top + $(this).outerHeight();
+          var bottom_of_screen = $(window).scrollTop() + $(window).innerHeight();
+          var top_of_screen = $(window).scrollTop();
+          if ((bottom_of_screen > top_of_element) && (top_of_screen < bottom_of_element)){
+            if ($(this).data('seen') === 'False') {
+                msg_elem = $(this);
+                $.get(
+                  "{% url 'app-base:change-seen-status' %}",
+                  {'msg_id': $(this).data('msg-num')},
+                  function(data, status){
+                    console.log(data, status)
+                    if (status === 'success') {
+                      setTimeout(function() {
+                        msg_elem.addClass('animated heartBeat');
+                        msg_elem.text('done_all');
+                      }, 2000);
+                    }
+                });
+              $(this).data('seen', 'True');
+            }
+          }
+        });
+      })
+    });
   {% for chat in exercise.chats.all %}
     var editor = CodeMirror($("article.code{{ forloop.counter }}")[0], {
       readOnly: true,

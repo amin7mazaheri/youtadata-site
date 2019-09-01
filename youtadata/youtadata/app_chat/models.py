@@ -18,6 +18,7 @@ class Chat(models.Model):
     content_object = GenericForeignKey()
     create_datetime = models.DateTimeField(auto_now_add=True, null=True)
     seen_datetime = models.DateTimeField(null=True)
+    seen  = models.BooleanField(null=True, default=False)
     
     def jd_create_datetime(self):
         jdatetime.set_locale('fa_IR')

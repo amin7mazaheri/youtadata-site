@@ -1,5 +1,8 @@
+import json
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse
+from app_chat.models import Chat
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from app_base.models import Course
@@ -45,3 +48,19 @@ def register_course(request, course_id):
         messages.success(
             request, '%s عزیز، شما قبلا در این دوره ثبت نام کرده اید!' % request.user.username)
     return HttpResponseRedirect(reverse('app-accounts:profile'))
+
+
+def change_seen_status(request):
+    msg_id = request.GET.get('msg_id')
+    if msg_id:
+        try:
+            msg_id = int(msg_id)
+            msg = Chat.objects.filter(id=msg_id)
+            if msg:
+                msg = msg[0]
+                msg.seen = True
+                msg.save()
+        except ValueError:
+            pass
+    response_data = {}
+    return HttpResponse(json.dumps(response_data), content_type="application/json")
