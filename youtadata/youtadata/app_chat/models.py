@@ -3,6 +3,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericRelation
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.auth import get_user_model
+import jdatetime
 
 
 User = get_user_model()
@@ -18,6 +19,17 @@ class Chat(models.Model):
     create_datetime = models.DateTimeField(auto_now_add=True, null=True)
     seen_datetime = models.DateTimeField(null=True)
     
+    def jd_create_datetime(self):
+        jdatetime.set_locale('fa_IR')
+        jdatetime.datetime.now().strftime('%A %B')
+        jd_datetime = jdatetime.datetime.fromgregorian(
+             year = self.create_datetime.year(),
+             month = self.create_datetime.month(),
+             hour = self.create_datetime.hour(),
+             minute = self.create_datetime.minute(),
+             second = self.create_datetime.second()
+            )
+        return dj_datetime.strftime("%A, %d %B %y %H:%M:%S")
 
     @property
     def is_student(self):

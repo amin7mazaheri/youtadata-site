@@ -53,7 +53,7 @@
                 <article class="code code{{ forloop.counter }}"></article>
                 <p>{{ chat.message }}</p>
                 <hr>
-                <div>پیام شما در ساعت {{ chat.create_datetime }} ب.ظ دیده شد. <i class="material-icons right light-blue-text">done_all</i></div>
+                <div>{{ chat.jd_create_datetime }}<i class="material-icons right light-blue-text">done_all</i></div>
               </div>
             </div>
           </div>
@@ -64,7 +64,7 @@
                 <article class="code code{{ forloop.counter }}"></article>
                 <p>{{ chat.message }}</p>
                 <hr>
-                <div>پیام شما در ساعت {{ chat.create_datetime }} دیده شد. <i class="material-icons right green-text text-lighten-2">done_all</i></div>
+                <div>{{ chat.jd_create_datetime }}<i class="material-icons right green-text text-lighten-2">done_all</i></div>
               </div>
             </div>
           </div>
