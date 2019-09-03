@@ -1,5 +1,5 @@
 import json
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseBadRequest
 from django.shortcuts import render
 from django.urls import reverse
 from app_chat.models import Chat
@@ -50,6 +50,7 @@ def register_course(request, course_id):
     return HttpResponseRedirect(reverse('app-accounts:profile'))
 
 
+@login_required
 def change_seen_status(request):
     msg_id = request.GET.get('msg_id')
     if msg_id:
@@ -57,10 +58,14 @@ def change_seen_status(request):
             msg_id = int(msg_id)
             msg = Chat.objects.filter(id=msg_id)
             if msg:
-                msg = msg[0]
-                msg.seen = True
-                msg.save()
+                msg_owner_groups = [gp.name for gp in msg[0].user.groups.all()]
+                requested_user_groups = [gp.name for gp in request.user.groups.all()]
+                if ('students' in msg_owner_groups and 'operators' in requested_user_groups) or \
+                        ('operators' in msg_owner_groups and 'students' in requested_user_groups):
+                    msg = msg[0]
+                    msg.seen = True
+                    msg.save()
         except ValueError:
-            pass
+            return HttpResponseBadRequest()
     response_data = {}
     return HttpResponse(json.dumps(response_data), content_type="application/json")
