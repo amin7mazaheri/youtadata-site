@@ -43,7 +43,11 @@ INSTALLED_APPS = [
     'social_django',
     'app_chat',
     'ckeditor',
-    'ckeditor_uploader'
+    'ckeditor_uploader',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'app_api',
+    'app_social'
 ]
 
 MIDDLEWARE = [

@@ -27,6 +27,8 @@ urlpatterns = [
     url(r'^login/$', views.LoginView.as_view(), name='login'),
     url(r'^logout/$', views.LogoutView.as_view(), name='logout'),
     url(r'^auth/', include('social_django.urls', namespace='social')),
+    url(r'^api-auth/', include('rest_framework.urls')),
+    url(r'^api/', include(('app_api.urls','app_api'), namespace='app-api')),
     path('', include(('app_base.urls', 'app_base'), namespace='app-base')),
     path('profile/', include(('app_accounts.urls', 'app_accounts'), namespace='app-accounts')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

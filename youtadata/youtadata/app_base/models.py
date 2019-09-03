@@ -6,6 +6,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericRelation
 from django.contrib.contenttypes.fields import GenericForeignKey
 from app_chat.models import Chat
+from app_social.models import Like
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
@@ -24,6 +25,11 @@ class Course(models.Model):
     title = models.CharField(max_length=100, null=True)
     description = models.TextField(null=True)
     chats = GenericRelation(Chat)
+    likes = GenericRelation(Like)
+
+    def get_absolute_url(self):
+        params = {'slug': self.slug}
+        return reverse('app-base:course-detail', kwargs=params)
 
     def save(self, *args, **kwargs):
         self.slug = self.title.replace(' ', '-')
@@ -41,6 +47,7 @@ class CourseSession(models.Model):
     aparat_video = models.TextField(null=True)
     attachment_files = GenericRelation('AttachmentFiles')
     chats = GenericRelation(Chat)
+    likes = GenericRelation(Like)
 
     def save(self, *args, **kwargs):
         self.slug = self.title.replace(' ', '-')
@@ -61,6 +68,7 @@ class CourseSessionExercise(models.Model):
     description = RichTextUploadingField(null=True)
     attachment_files = GenericRelation('AttachmentFiles')
     chats = GenericRelation(Chat)
+    likes = GenericRelation(Like)
 
     def save(self, *args, **kwargs):
         self.slug = self.title.replace(' ', '-')
