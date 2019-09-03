@@ -1,9 +1,13 @@
 from django.db import models
+from ckeditor_uploader.fields import RichTextUploadingField
+from django.db import models
 from django.urls import reverse
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericRelation
 from django.contrib.contenttypes.fields import GenericForeignKey
-from app_chat.models import Chat 
+from app_chat.models import Chat
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 
 def course_image_path(instance, filename):
@@ -19,6 +23,7 @@ class Course(models.Model):
     image = models.ImageField(upload_to=course_image_path, null=True)
     title = models.CharField(max_length=100, null=True)
     description = models.TextField(null=True)
+    chats = GenericRelation(Chat)
 
     def save(self, *args, **kwargs):
         self.slug = self.title.replace(' ', '-')
@@ -53,7 +58,7 @@ class CourseSessionExercise(models.Model):
     slug = models.SlugField(null=True, allow_unicode=True, blank=True)
     course_session = models.ForeignKey(CourseSession, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=100, null=True)
-    description = models.TextField(null=True)
+    description = RichTextUploadingField(null=True)
     attachment_files = GenericRelation('AttachmentFiles')
     chats = GenericRelation(Chat)
 

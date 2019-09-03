@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
     'social_django',
     'app_chat',
+    'ckeditor',
+    'ckeditor_uploader'
 ]
 
 MIDDLEWARE = [
@@ -125,8 +127,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 
 STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR +'/static/'
 MEDIA_ROOT = BASE_DIR +'/media/'
 MEDIA_URL = '/media/'
+CKEDITOR_UPLOAD_PATH = '/ck/upload/'
 #this argument use to login with social media 
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'

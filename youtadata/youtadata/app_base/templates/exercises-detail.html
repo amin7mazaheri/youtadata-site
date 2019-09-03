@@ -22,7 +22,7 @@
         <div class="col m12">
           <h2>{{ exercise.title }}</h2>
           <div class="card-panel">
-            <p>{{ exercise.description }}</p>
+            <p>{{ exercise.description|safe }}</p>
           </div>
         </div>
       </div>
