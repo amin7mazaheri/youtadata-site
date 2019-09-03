@@ -14,19 +14,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from django.conf.urls import url, include
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls import url
 from django.contrib.auth import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^login/$', views.LoginView.as_view(), name='login'),
     url(r'^logout/$', views.LogoutView.as_view(), name='logout'),
-    url(r'^oauth/', include(('social_django.urls'), namespace='social')),
+    url(r'^auth/', include('social_django.urls', namespace='social')),
     path('', include(('app_base.urls', 'app_base'), namespace='app-base')),
-    path('profile',include(('app_accounts.urls', 'app_accounts'), namespace='app-accounts')),
+    path('profile/', include(('app_accounts.urls', 'app_accounts'), namespace='app-accounts')),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
- ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
