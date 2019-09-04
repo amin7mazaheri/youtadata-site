@@ -48,7 +48,7 @@
   <main>
     <nav class="white" role="navigation">
       <div class="nav-wrapper container ltr">
-        <a id="logo-container" href="#" class="brand-logo">PyTeacher</a>
+        <a id="logo-container" href="#" class="brand-logo">YoutaData</a>
         <ul class="right hide-on-med-and-down">
           <li><a href="{% url 'app-accounts:profile' %}">پروفایل</a></li>
           <li><a href="{% url 'app-base:home' %}">خانه</a></li>
@@ -69,6 +69,8 @@
         <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       </div>
     </nav>
+
+    {% block breadcrumb %}{% endblock breadcrumb %}
 
     {% block content %}{% endblock content %}
   </main>
@@ -104,7 +106,7 @@
     </div>
     <div class="footer-copyright">
       <div class="container">
-      ساخته شده توسط <a class="brown-text text-lighten-3" href="http://materializecss.com">محمدرضا کسائی</a>
+      ساخته شده توسط <a class="brown-text text-lighten-3" href="http://materializecss.com">امین مظاهری</a>
       </div>
     </div>
   </footer>
@@ -118,6 +120,37 @@
   <script type="text/javascript">
     $(document).ready(function(){
       $('.sidenav').sidenav({edge: 'right'});
+      $('.bookmark').on('click', function(){
+        if ($(this).text() == 'bookmark') {
+          $(this).text('bookmark_border');
+          $(this).css('color', '#000')
+        } else {
+          $(this).text('bookmark');
+          $(this).css('color', '#f57c00')
+        }
+      });
+      $('.like').on('click', function(){
+        if ($(this).text() == 'favorite') {
+          $(this).text('favorite_border');
+          $(this).css('color', '#000')
+        } else {
+          $(this).text('favorite');
+          $(this).css('color', '#d81b60')
+        }
+        $.post(
+          "{% url 'app-api:like' %}",
+          {
+            'id': $(this).data('id'),
+            'type': $(this).data('type'),
+            'csrfmiddlewaretoken': '{{ csrf_token }}'
+          },
+          function(data, status){
+            M.toast({html: data['message']})
+        });
+      });
+      $('.share').on('click', function(){
+        $(this).css('color', '#2196f3')
+      });
     })
     {% if messages %}
       {% for message in messages %}

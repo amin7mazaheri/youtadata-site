@@ -153,6 +153,14 @@ AUTHENTICATION_BACKENDS = (
  'social_core.backends.google.GoogleOAuth2',
  'social_core.backends.github.GithubOAuth2',
  'social_core.backends.facebook.FacebookOAuth2',
- 
  'django.contrib.auth.backends.ModelBackend',
 )
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
+ALLOWED_LIKE_TYPES = ('Course', 'CourseSession', 'CourseSessionExercise')
